@@ -7,14 +7,6 @@
 
 • Deploying a ___Machine Learning Web App___ created with ___Flask___ on ___Heroku___ platform.
 
-• If you want to view the deployed model, click on the following link:
-https://ipl-score-prediction-app458.herokuapp.com/
-
-• Please do ⭐ the repository, if it helped you in anyway.
-## Authors
-
-- [@Akash Kumar Jha](https://github.com/Akash1070)
-
 
 ## Deployment
 
@@ -50,43 +42,4 @@ To run tests, run the following command
 ```bash
   python app.py
 ```
-
-## Running Heroku Tests
-
-To run a Heroku deployment tests, click on the following link:
-
-[IPL First Innings Score Prediction App](https://ipl-score-prediction-app458.herokuapp.com/)
-
-## 🚀 About Me
-
-Data Scientist Enthusiast | Petroleum Engineer Graduate | Solving Problems Using Data 
-
-
-# Hi, I'm Akash! 👋
-
-
-## 🔗 Links
-[![github](https://img.shields.io/badge/github-000?style=for-the-badge&logo=ko-fi&logoColor=white)](https://github.com/Akash1070)
-[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/akashkumar107/)
-## Other Me
-👩‍💻 I’m interested in Petroleum Engineering
-
-🧠 I’m currently learning Data Scientist | Data Analytics | Business Analytics
-
-👯‍♀️ I’m looking to collaborate on Ideas & Data
-
-
-
-
-## 🛠 Skills
-1. Data Scientist
-2. Data Analyst
-3. Business Analyst
-4. Machine Learning 
-
-
-## Future Plans 
-
-⚡️ Looking forward to help drive innovations into your company as a Data Scientist
-
-⚡️ Looking forward to offer more than I take and leave the place better than i found
+"# ipl-score-and-win-prediction" 
