@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+
+    <title>Resultfinals</title>
+</head>
+<script>
+    function goBack() {
+    window.history.back();
+    }
+</script>
+<body class="div3">
+    <button onclick="goBack()" class="back-button">⬅ Go Back</button>
+
+    <h1>Winning Probability</h1>
+    <p>{{ batting_team }}: {{ win_prob2 }}%</p>
+    <p>{{ bowling_team }}: {{ win_prob1 }}%</p>
+</body>
+</html>

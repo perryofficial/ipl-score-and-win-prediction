@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>IPL Win Predictor</title>
+        
+        <link rel="shortcut icon" href="{{ url_for('static', filename='ipl-favicon.ico') }}">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+        <script src="https://kit.fontawesome.com/5f3f547070.js" crossorigin="anonymous"></script>
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+    </head>
+    
+    <script>
+        
+
+
+        function goBack() {
+        window.history.back();
+        }
+
+
+        function validateForm() {
+            var target = document.getElementById("target").value;
+            var overs = document.getElementById("overs").value;
+
+            if (target < 0 || target > 720 || isNaN(target)) {
+                alert("Please enter a valid target between 0 and 720");
+                return false;
+            }
+
+            var oversParts = overs.split('.');
+            if (oversParts.length > 1 && oversParts[1] > 6) {
+                alert("The value after the decimal point in overs should not be greater than 6");
+                return false;
+            }
+
+            if (!/^\d+(\.\d)?$/.test(overs) || overs < 0 || overs >= 20.7) {
+                alert("Please enter a valid number of overs between 0.0 and 20.6");
+                return false;
+            }
+
+            return true;
+        }
+    </script>
+    <body>
+
+        <!-- Website Title -->
+    	<div class="container">
+            <h2 class='container-heading'><span class='heading_first'>Second Innings Score Predictor for </span><span class="heading_second">Indian Premier League (IPL)</span></h2>
+            <div class='description'>
+    			
+    		</div>
+    	</div>
+        <button onclick="goBack()" class="back-button">⬅ Go Back</button>
+
+        <!-- Prediction Area -->
+        <div class="prediction-area">
+
+            <!-- IPL Banner - 1 -->
+            <div class='ipl-banner-left'>
+
+                <div class="slider-frame">
+                    <div class="slide-images-up">
+
+                        <!-- Image-1 -->
+                        <div class="image-container">
+                            <img class="image-width" src="{{ url_for('static', filename='mi.jpg') }}" alt="Mumbai Indians">
+                        </div>
+                        <!-- Image-2 -->
+                        <div class="image-container">
+                            <img class="image-width" src="{{ url_for('static', filename='srh.png') }}" alt="Sunrisers Hyderabad">
+                        </div>
+                        <!-- Image-3 -->
+                        <div class="image-container">
+                            <img class="image-width" src="{{ url_for('static', filename='rcb.png') }}" alt="Royal Challengers Bangalore">
+                        </div>
+                        <!-- Image-4 -->
+                        <div class="image-container">
+                            <img class="image-width" src="{{ url_for('static', filename='dc.png') }}" alt="Delhi Capitals">
+                        </div>
+                        <!-- Image-5 -->
+                        <div class="image-container">
+                            <img class="image-width" src="{{ url_for('static', filename='rr.png') }}" alt="Rajasthan Royals">
+                        </div>
+                        <!-- Image-6 -->
+                        <div class="image-container">
+                            <img class="image-width" src="{{ url_for('static', filename='kkr.jpg') }}" alt="Kolkata Knight Riders">
+                        </div>
+                        <!-- Image-7 -->
+                        <div class="image-container">
+                            <img class="image-width" src="{{ url_for('static', filename='kxip.png') }}" alt="Kings XI Punjab">
+                        </div>
+                        <!-- Image-8 -->
+                        <div class="image-container">
+                            <img class="image-width" src="{{ url_for('static', filename='csk.png') }}" alt="Chennai Super Kings">
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Prediction Form -->
+            <div class='div2'>
+               
+                  <h1>IPL Win Predictor</h1>
+                <form action="/predicto" method="post" onsubmit="return validateForm()">
+                    <!-- <label for="batting_team">Batting Team:</label> -->
+                    <select id="batting_team" class="form-input align-center" name="batting_team">
+                        <option value="none">--- Select a Batting team ---</option>
+                        <option value="Sunrisers Hyderabad">Sunrisers Hyderabad</option>
+                        <option value="Mumbai Indians">Mumbai Indians</option>
+                        <option value="Royal Challengers Bangalore">Royal Challengers Bangalore</option>
+                        <option value="Kolkata Knight Riders">Kolkata Knight Riders</option>
+                        <option value="Kings XI Punjab">Kings XI Punjab</option>
+                        <option value="Chennai Super Kings">Chennai Super Kings</option>
+                        <option value="Rajasthan Royals">Rajasthan Royals</option>
+                        <option value="Delhi Capitals">Delhi Capitals</option>
+                    </select><br>
+                    <!-- <label for="bowling_team">Bowling Team:</label> -->
+                    <select id="bowling_team" class="form-input align-center" name="bowling_team">
+                        <option value="none">--- Select a Bowling team ---</option>
+                        <option value="Sunrisers Hyderabad">Sunrisers Hyderabad</option>
+                        <option value="Mumbai Indians">Mumbai Indians</option>
+                        <option value="Royal Challengers Bangalore">Royal Challengers Bangalore</option>
+                        <option value="Kolkata Knight Riders">Kolkata Knight Riders</option>
+                        <option value="Kings XI Punjab">Kings XI Punjab</option>
+                        <option value="Chennai Super Kings">Chennai Super Kings</option>
+                        <option value="Rajasthan Royals">Rajasthan Royals</option>
+                        <option value="Delhi Capitals">Delhi Capitals</option>
+                    </select><br>
+
+
+                    <!-- <label for="selected_city">City:</label> -->
+                    <select id="selected_city" class="form-input align-center" name="selected_city">
+                        <option value="none">--- Select a city ---</option>
+                        <option value="Abu Dhabi">Abu Dhabi</option>
+                        <option value="Ahmedabad">Ahmedabad</option>
+                        <option value="Bangalore">Bangalore</option>
+                        <option value="Bengaluru">Bengaluru</option>
+                        <option value="Bloemfontein">Bloemfontein</option>
+                        <option value="Cape Town">Cape Town</option>
+                        <option value="Centurion">Centurion</option>
+                        <option value="Chandigarh">Chandigarh</option>
+                        <option value="Chennai">Chennai</option>
+                        <option value="Cuttack">Cuttack</option>
+                        <option value="Delhi">Delhi</option>
+                        <option value="Dharamsala">Dharamsala</option>
+                        <option value="Durban">Durban</option>
+                        <option value="East London">East London</option>
+                        <option value="Hyderabad">Hyderabad</option>
+                        <option value="Indore">Indore</option>
+                        <option value="Jaipur">Jaipur</option>
+                        <option value="Johannesburg">Johannesburg</option>
+                        <option value="Kimberley">Kimberley</option>
+                        <option value="Kolkata">Kolkata</option>
+                        <option value="Mohali">Mohali</option>
+                        <option value="Mumbai">Mumbai</option>
+                        <option value="Nagpur">Nagpur</option>
+                        <option value="Port Elizabeth">Port Elizabeth</option>
+                        <option value="Pune">Pune</option>
+                        <option value="Raipur">Raipur</option>
+                        <option value="Ranchi">Ranchi</option>
+                        <option value="Sharjah">Sharjah</option>
+                        <option value="Visakhapatnam">Visakhapatnam</option>
+                    </select><br>
+
+                    <!-- <label for="target">Target (0-720):</label> -->
+                    <input type="number" class="form-input align-center " id="target" name="target" min="0" max="720" placeholder="Target"><br>
+
+                    <!-- <label for="score">Score:</label> -->
+                    <input type="number" class="form-input align-center" id="score" name="score" placeholder="Score"><br>
+
+                    <!-- <label for="wickets">Wickets:</label> -->
+                    <input type="number" class="form-input align-center" id="wickets" name="wickets" placeholder="Wickets"><br>
+
+                    <!-- <label for="overs">Overs completed (0.0-20.6):</label> -->
+                    <input type="text"  placeholder="Overs completed (0.0-19.6)" class="form-input align-center " id="overs" name="overs" pattern="\d+(\.\d)?$" title="Enter a number with one decimal place, where the value after the decimal is less than or equal to 6" maxlength="4"><br>
+
+                    <input type="submit" value="Predict" class="myButton">
+
+
+
+                    
+                </form>
+            </div>
+
+            <!-- IPL Banner - 2 -->
+            <div class='ipl-banner-right'>
+
+                <div class="slider-frame">
+                    <div class="slide-images-down">
+
+                        <!-- Image-1 -->
+                        <div class="image-container">
+                            <img class="image-width" src="{{ url_for('static', filename='mi.jpg') }}" alt="Mumbai Indians">
+                        </div>
+                        <!-- Image-2 -->
+                        <div class="image-container">
+                            <img class="image-width" src="{{ url_for('static', filename='srh.png') }}" alt="Sunrisers Hyderabad">
+                        </div>
+                        <!-- Image-3 -->
+                        <div class="image-container">
+                            <img class="image-width" src="{{ url_for('static', filename='rcb.png') }}" alt="Royal Challengers Bangalore">
+                        </div>
+                        <!-- Image-4 -->
+                        <div class="image-container">
+                            <img class="image-width" src="{{ url_for('static', filename='dc.png') }}" alt="Delhi Capitals">
+                        </div>
+                        <!-- Image-5 -->
+                        <div class="image-container">
+                            <img class="image-width" src="{{ url_for('static', filename='kkr.jpg') }}" alt="Kolkata Knight Riders">
+                        </div>
+                        <!-- Image-6 -->
+                        <div class="image-container">
+                            <img class="image-width" src="{{ url_for('static', filename='rr.png') }}" alt="Rajasthan Royals">
+                        </div>
+                        <!-- Image-7 -->
+                        <div class="image-container">
+                            <img class="image-width" src="{{ url_for('static', filename='kxip.png') }}" alt="Kings XI Punjab">
+                        </div>
+                        <!-- Image-8 -->
+                        <div class="image-container">
+                            <img class="image-width" src="{{ url_for('static', filename='csk.png') }}" alt="Chennai Super Kings">
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Footer -->
+       <!-- <div class='footer'>
+           
+           <p class='footer-description'>Made with ❤️ by Prajwal Naik, Jimit Mehta,  .</p>
+       </div> -->
+
+    </body>
+</html>
